@@ -2,6 +2,7 @@
 
 .root {
   width: "100%";
+  font-family: "Lato", sans-serif;
 }
 
 body {
@@ -15,18 +16,12 @@ h1 {
   letter-spacing: 2px;
   font-size: 48px;
 }
-p {
-  font-family: "Lato", sans-serif;
-  letter-spacing: 1px;
-  font-size: 14px;
-  color: #333333;
-}
 
-.count {
-  position: absolute;
-  bottom: 10%;
-  color: orangered;
-  z-index: 5;
+h2 {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-size: 36px;
 }
 
 .header {
@@ -45,7 +40,7 @@ p {
 }
 
 .inner-header {
-  height: 30vh;
+  height: 15vh;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -97,10 +92,25 @@ p {
     transform: translate3d(85px, 0, 0);
   }
 }
+
+.content {
+  position: relative;
+  margin-top: -70px;
+}
+
 /*Shrinking for mobile*/
 @media (max-width: 768px) {
   .waves {
     height: 80px;
     min-height: 80px;
+  }
+  h1 {
+    font-size: 36px;
+  }
+  h2 {
+    font-size: 24px;
+  }
+  .content {
+    margin-top: -40px;
   }
 }

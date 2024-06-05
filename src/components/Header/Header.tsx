@@ -7,8 +7,6 @@ function Header() {
         <svg
           fill="#002466"
           className="logo"
-          width="800px"
-          height="800px"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >

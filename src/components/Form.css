@@ -1,0 +1,14 @@
+.form-container {
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 800px;
+  color: azure;
+}
+
+.mantine-Stepper-stepIcon:where([data-progress]) {
+  border-color: #386ed3;
+}
+
+.mantine-Stepper-separator:where([data-active]) {
+  background-color: #386ed3;
+}

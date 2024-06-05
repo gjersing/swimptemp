@@ -1,9 +1,7 @@
-import { useState } from "react";
+import Form from "./components/Form";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div className="app">
       <div className="header">
@@ -65,13 +63,8 @@ function App() {
           </svg>
         </div>
       </div>
-      <div className="content flex">
-        <button
-          className="count"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          count is {count}!
-        </button>
+      <div className="content">
+        <Form />
       </div>
     </div>
   );

@@ -20,7 +20,7 @@ h2 {
 }
 
 .logo {
-  width: 50px;
+  width: 70px;
   fill: black;
   padding-right: 15px;
   display: inline-block;
@@ -95,6 +95,10 @@ h2 {
   }
   h2 {
     font-size: 24px;
+  }
+  .logo {
+    width: 50px;
+    padding-right: 8px;
   }
   .pageTitle {
     margin-bottom: -20px;

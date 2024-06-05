@@ -40,10 +40,10 @@ h2 {
 }
 
 .inner-header {
-  height: 15vh;
+  height: 12vh;
   width: 100%;
   margin: 0;
-  padding: 0;
+  padding: 40px 0 0 0;
 }
 
 .flex {
@@ -92,10 +92,12 @@ h2 {
     transform: translate3d(85px, 0, 0);
   }
 }
+.pageTitle {
+  margin-bottom: -30px;
+}
 
 .content {
-  position: relative;
-  margin-top: -70px;
+  padding-top: 12px;
 }
 
 /*Shrinking for mobile*/
@@ -110,7 +112,7 @@ h2 {
   h2 {
     font-size: 24px;
   }
-  .content {
-    margin-top: -40px;
+  .pageTitle {
+    margin-bottom: -20px;
   }
 }

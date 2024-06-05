@@ -24,7 +24,7 @@ function App() {
           </svg>
           <h1>SAFE2SWIM</h1>
         </div>
-        <h2>Water Safety Calculator</h2>
+        <h2 className="pageTitle">Water Safety Calculator</h2>
         <div>
           <svg
             className="waves"
@@ -33,6 +33,7 @@ function App() {
             viewBox="0 24 150 28"
             preserveAspectRatio="none"
             shapeRendering="auto"
+            data-testid="waves_svg"
           >
             <defs>
               <path

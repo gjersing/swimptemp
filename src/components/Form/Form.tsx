@@ -1,13 +1,23 @@
 import { useState } from "react";
-import { Stepper, Button, Group, TextInput, Code } from "@mantine/core";
+import {
+  Stepper,
+  Button,
+  Group,
+  Code,
+  Slider,
+  Checkbox,
+  Text,
+  Card,
+} from "@mantine/core";
 import { useForm } from "@mantine/form";
 import "./Form.css";
+import { WiCloud, WiCloudyGusts, WiRain } from "react-icons/wi";
 
 function Form() {
   const [active, setActive] = useState(0);
 
   const form = useForm({
-    mode: "uncontrolled",
+    mode: "controlled",
     initialValues: {
       air: 55,
       water: 55,
@@ -28,37 +38,80 @@ function Form() {
     <div className="form-container">
       <Stepper active={active}>
         <Stepper.Step label="Air Temperature">
-          <TextInput
-            label="air"
-            placeholder="air"
-            key={form.key("air")}
-            {...form.getInputProps("air")}
-          />
+          <Card>
+            <Text mx="auto">{form.values.air}</Text>
+            <Slider
+              defaultValue={75}
+              min={30}
+              max={90}
+              key={form.key("air")}
+              {...form.getInputProps("air")}
+            />
+          </Card>
         </Stepper.Step>
 
         <Stepper.Step label="Water Temperature">
-          <TextInput
-            label="water"
-            placeholder="water"
-            key={form.key("water")}
-            {...form.getInputProps("water")}
-          />
+          <Card>
+            <Text mx="auto">{form.values.water}</Text>
+            <Slider
+              defaultValue={75}
+              min={30}
+              max={90}
+              key={form.key("water")}
+              {...form.getInputProps("water")}
+            />
+          </Card>
         </Stepper.Step>
 
         <Stepper.Step label="Wind & Rain">
-          <TextInput
-            label="wind"
-            placeholder="wind"
-            key={form.key("wind")}
-            {...form.getInputProps("wind")}
-          />
-          <TextInput
-            mt="md"
-            label="rain"
-            placeholder="rain"
-            key={form.key("rain")}
-            {...form.getInputProps("rain")}
-          />
+          <div className="checkbox-container">
+            <div className="checkbox-card">
+              <Checkbox
+                radius="md"
+                label="Winds >5 MPH?"
+                key={form.key("wind")}
+                {...form.getInputProps("wind", { type: "checkbox" })}
+              />
+              {form.values.wind ? (
+                <WiCloudyGusts
+                  fontSize={128}
+                  onClick={() => {
+                    form.setValues({ wind: !form.getValues().wind });
+                  }}
+                />
+              ) : (
+                <WiCloud
+                  fontSize={128}
+                  onClick={() => {
+                    form.setValues({ wind: !form.getValues().wind });
+                  }}
+                />
+              )}
+            </div>
+            <div className="checkbox-card">
+              <Checkbox
+                radius="md"
+                label="Rain?"
+                key={form.key("rain")}
+                {...form.getInputProps("rain", { type: "checkbox" })}
+              />
+              {form.values.rain ? (
+                <WiRain
+                  fontSize={128}
+                  onClick={() => {
+                    form.setValues({ rain: !form.values.rain });
+                  }}
+                />
+              ) : (
+                <WiCloud
+                  fontSize={128}
+                  onClick={() => {
+                    form.setValues({ rain: !form.values.rain });
+                  }}
+                />
+              )}
+            </div>
+          </div>
         </Stepper.Step>
         <Stepper.Completed>
           Completed! Form values:

@@ -17,6 +17,12 @@ import { IoSunnyOutline, IoWaterOutline } from "react-icons/io5";
 function Form() {
   const [active, setActive] = useState(0);
 
+  const marks = [
+    { value: 30, label: "< 30" },
+    { value: 60, label: "60" },
+    { value: 90, label: "> 90" },
+  ];
+
   const form = useForm({
     mode: "controlled",
     initialValues: {
@@ -39,7 +45,7 @@ function Form() {
     <div className="form-container">
       <Stepper active={active}>
         <Stepper.Step label="Air Temperature">
-          <Card>
+          <Card className="temp-card">
             <div className="temperature-icon">
               <IoSunnyOutline fontSize={128} />
               <Text className="air-text">{form.values.air}</Text>
@@ -50,14 +56,15 @@ function Form() {
               max={90}
               key={form.key("air")}
               {...form.getInputProps("air")}
+              marks={marks}
             />
           </Card>
         </Stepper.Step>
 
         <Stepper.Step label="Water Temperature">
-          <Card>
+          <Card className="temp-card">
             <div className="temperature-icon">
-              <IoWaterOutline fontSize={128} />
+              <IoWaterOutline fontSize={80} className="water-icon" />
               <Text className="water-text">{form.values.water}</Text>
             </div>
             <Slider
@@ -66,6 +73,7 @@ function Form() {
               max={90}
               key={form.key("water")}
               {...form.getInputProps("water")}
+              marks={marks}
             />
           </Card>
         </Stepper.Step>

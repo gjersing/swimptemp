@@ -43,15 +43,15 @@ function Form() {
 
   return (
     <div className="form-container">
-      <Stepper active={active}>
-        <Stepper.Step label="Air Temperature">
+      <Stepper active={active} onStepClick={setActive}>
+        <Stepper.Step>
           <Card className="temp-card">
             <div className="temperature-icon">
               <IoSunnyOutline fontSize={128} />
               <Text className="air-text">{form.values.air}</Text>
             </div>
             <Slider
-              defaultValue={75}
+              defaultValue={60}
               min={30}
               max={90}
               key={form.key("air")}
@@ -61,14 +61,14 @@ function Form() {
           </Card>
         </Stepper.Step>
 
-        <Stepper.Step label="Water Temperature">
+        <Stepper.Step>
           <Card className="temp-card">
             <div className="temperature-icon">
               <IoWaterOutline fontSize={80} className="water-icon" />
               <Text className="water-text">{form.values.water}</Text>
             </div>
             <Slider
-              defaultValue={75}
+              defaultValue={60}
               min={30}
               max={90}
               key={form.key("water")}
@@ -78,12 +78,12 @@ function Form() {
           </Card>
         </Stepper.Step>
 
-        <Stepper.Step label="Wind & Rain">
+        <Stepper.Step>
           <div className="checkbox-container">
             <div className="checkbox-card">
               <Checkbox
                 radius="md"
-                label="Winds >5 MPH?"
+                label="Wind?"
                 key={form.key("wind")}
                 {...form.getInputProps("wind", { type: "checkbox" })}
               />
@@ -130,21 +130,21 @@ function Form() {
         </Stepper.Step>
         <Stepper.Completed>
           Completed! Form values:
-          <Code block mt="xl">
+          <Code block mt="lg">
             {JSON.stringify(form.getValues(), null, 2)}
           </Code>
         </Stepper.Completed>
       </Stepper>
 
-      <Group justify="space-between" mt="xl">
+      <Group justify="center" mt="lg">
         {active !== 0 && (
-          <Button variant="default" onClick={prevStep}>
-            Back
+          <Button variant="default" w={100} onClick={prevStep}>
+            {"<"}
           </Button>
         )}
         {active !== 3 && (
-          <Button ml="auto" onClick={nextStep}>
-            Next step
+          <Button w={100} onClick={nextStep}>
+            {">"}
           </Button>
         )}
       </Group>

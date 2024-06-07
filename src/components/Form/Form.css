@@ -13,11 +13,32 @@
   background-color: #386ed3;
 }
 
+.mantine-Stepper-steps {
+  margin: auto;
+  width: 60%;
+
+  @media (max-width: em(500px)) {
+    width: 80%;
+  }
+
+  @media (max-width: em(300px)) {
+    width: 95%;
+  }
+}
+
+.mantine-Stepper-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 205px;
+}
+
 .temp-card {
   border-radius: 4px;
   border: 1px solid darkslategray;
-  padding-bottom: 2rem;
-  width: 80%;
+  padding-bottom: 27px;
+  max-width: 420px;
+  width: 95%;
   margin: auto;
 }
 
@@ -52,14 +73,28 @@
 .checkbox-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 2rem;
   align-items: center;
+
+  @media (max-width: em(400px)) {
+    gap: 1rem;
+  }
 }
 
 .checkbox-card {
   border-radius: 4px;
+  width: 170px;
   border: 1px solid darkslategray;
   background-color: white;
   color: black;
   padding: 1rem;
+
+  @media (max-width: em(400px)) {
+    width: 120px;
+    padding: 0.25rem;
+    svg {
+      font-size: 100px;
+    }
+  }
 }

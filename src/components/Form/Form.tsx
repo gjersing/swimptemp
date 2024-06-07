@@ -12,6 +12,7 @@ import {
 import { useForm } from "@mantine/form";
 import "./Form.css";
 import { WiCloud, WiCloudyGusts, WiRain } from "react-icons/wi";
+import { IoSunnyOutline, IoWaterOutline } from "react-icons/io5";
 
 function Form() {
   const [active, setActive] = useState(0);
@@ -39,7 +40,10 @@ function Form() {
       <Stepper active={active}>
         <Stepper.Step label="Air Temperature">
           <Card>
-            <Text mx="auto">{form.values.air}</Text>
+            <div className="temperature-icon">
+              <IoSunnyOutline fontSize={128} />
+              <Text className="air-text">{form.values.air}</Text>
+            </div>
             <Slider
               defaultValue={75}
               min={30}
@@ -52,7 +56,10 @@ function Form() {
 
         <Stepper.Step label="Water Temperature">
           <Card>
-            <Text mx="auto">{form.values.water}</Text>
+            <div className="temperature-icon">
+              <IoWaterOutline fontSize={128} />
+              <Text className="water-text">{form.values.water}</Text>
+            </div>
             <Slider
               defaultValue={75}
               min={30}

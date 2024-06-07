@@ -13,6 +13,26 @@
   background-color: #386ed3;
 }
 
+.temperature-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 128px;
+
+  .air-text {
+    margin-top: -77px;
+    font-weight: bold;
+    user-select: none;
+  }
+
+  .water-text {
+    margin-top: -85px;
+    font-size: 28px;
+    font-weight: bold;
+    user-select: none;
+  }
+}
+
 .mantine-Checkbox-label {
   color: darkslategrey;
   user-select: none;

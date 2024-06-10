@@ -76,15 +76,23 @@
   justify-content: center;
   gap: 2rem;
   align-items: center;
-
-  @media (max-width: em(400px)) {
-    gap: 1rem;
-  }
 }
 
 .checkbox-title {
   display: flex;
   align-items: center;
+}
+
+.title-header {
+  margin-left: auto;
+}
+
+.rain-header {
+  margin-right: 28px;
+}
+
+.wind-header {
+  margin-right: 24px;
 }
 
 .checkbox-card {
@@ -94,12 +102,29 @@
   background-color: white;
   color: black;
   padding: 1rem;
+}
 
-  @media (max-width: em(400px)) {
-    width: 120px;
-    padding: 0.25rem;
+@media (max-width: em(400px)) {
+  .checkbox-container {
+    gap: 1rem;
+  }
+  .checkbox-card {
+    width: 150px;
     svg {
       font-size: 100px;
     }
+  }
+  .title-header {
+    margin: auto;
+  }
+}
+
+@media (max-width: em(330px)) {
+  .checkbox-card {
+    width: 120px;
+  }
+
+  .temperature-header {
+    font-size: 16px;
   }
 }

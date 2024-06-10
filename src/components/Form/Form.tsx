@@ -12,7 +12,7 @@ import {
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import "./Form.css";
-import { WiCloud, WiCloudyGusts, WiRain } from "react-icons/wi";
+import { WiCloud, WiCloudyGusts, WiRain, WiRainWind } from "react-icons/wi";
 import { IoSunnyOutline, IoWaterOutline } from "react-icons/io5";
 
 function Form() {
@@ -44,10 +44,14 @@ function Form() {
 
   return (
     <div className="form-container">
-      <Stepper active={active} onStepClick={setActive}>
-        <Stepper.Step>
+      <Stepper active={active} onStepClick={setActive} iconSize={48}>
+        <Stepper.Step
+          icon={<IoSunnyOutline fontSize={28} />}
+          completedIcon={<IoSunnyOutline fontSize={28} />}
+          title="Air Temperature (F°)"
+        >
           <Card className="temp-card">
-            <Title size="h3" mx="auto">
+            <Title size="h3" mx="auto" className="temperature-header">
               Air Temperature (F°)
             </Title>
             <div className="temperature-icon">
@@ -65,9 +69,13 @@ function Form() {
           </Card>
         </Stepper.Step>
 
-        <Stepper.Step>
+        <Stepper.Step
+          icon={<IoWaterOutline fontSize={26} />}
+          completedIcon={<IoWaterOutline fontSize={26} />}
+          title="Water Temperature (F°)"
+        >
           <Card className="temp-card">
-            <Title size="h3" mx="auto">
+            <Title size="h3" mx="auto" className="temperature-header">
               Water Temperature (F°)
             </Title>
             <div className="temperature-icon">
@@ -85,11 +93,15 @@ function Form() {
           </Card>
         </Stepper.Step>
 
-        <Stepper.Step>
+        <Stepper.Step
+          icon={<WiRainWind fontSize={32} />}
+          completedIcon={<WiRainWind fontSize={32} />}
+          title="Wind and Rain?"
+        >
           <div className="checkbox-container">
             <div className="checkbox-card">
               <div className="checkbox-title">
-                <Title order={3} size="h4" ml="auto" mr={24}>
+                <Title order={4} className="wind-header title-header">
                   Wind?
                 </Title>
                 <Checkbox
@@ -115,7 +127,7 @@ function Form() {
             </div>
             <div className="checkbox-card">
               <div className="checkbox-title">
-                <Title order={3} size="h4" ml="auto" mr={28}>
+                <Title order={4} className="rain-header title-header">
                   Rain?
                 </Title>
                 <Checkbox

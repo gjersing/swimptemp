@@ -44,7 +44,12 @@ function Form() {
 
   return (
     <div className="form-container">
-      <Stepper active={active} onStepClick={setActive} iconSize={48}>
+      <Stepper
+        active={active}
+        onStepClick={setActive}
+        iconSize={48}
+        color="#386ed3"
+      >
         <Stepper.Step
           icon={<IoSunnyOutline fontSize={28} />}
           completedIcon={<IoSunnyOutline fontSize={28} />}
@@ -65,6 +70,7 @@ function Form() {
               key={form.key("air")}
               {...form.getInputProps("air")}
               marks={marks}
+              color="#0040b6"
             />
           </Card>
         </Stepper.Step>
@@ -89,6 +95,7 @@ function Form() {
               key={form.key("water")}
               {...form.getInputProps("water")}
               marks={marks}
+              color="#0040b6"
             />
           </Card>
         </Stepper.Step>
@@ -107,6 +114,7 @@ function Form() {
                 <Checkbox
                   key={form.key("wind")}
                   {...form.getInputProps("wind", { type: "checkbox" })}
+                  color="#0040b6"
                 />
               </div>
               {form.values.wind ? (
@@ -115,6 +123,7 @@ function Form() {
                   onClick={() => {
                     form.setValues({ wind: !form.getValues().wind });
                   }}
+                  color="#002466"
                 />
               ) : (
                 <WiCloud
@@ -122,6 +131,7 @@ function Form() {
                   onClick={() => {
                     form.setValues({ wind: !form.getValues().wind });
                   }}
+                  color="#002466"
                 />
               )}
             </div>
@@ -133,6 +143,7 @@ function Form() {
                 <Checkbox
                   key={form.key("rain")}
                   {...form.getInputProps("rain", { type: "checkbox" })}
+                  color="#0040b6"
                 />
               </div>
               {form.values.rain ? (
@@ -141,6 +152,7 @@ function Form() {
                   onClick={() => {
                     form.setValues({ rain: !form.values.rain });
                   }}
+                  color="#002466"
                 />
               ) : (
                 <WiCloud
@@ -148,6 +160,7 @@ function Form() {
                   onClick={() => {
                     form.setValues({ rain: !form.values.rain });
                   }}
+                  color="#002466"
                 />
               )}
             </div>
@@ -168,7 +181,7 @@ function Form() {
           </Button>
         )}
         {active !== 3 && (
-          <Button w={100} onClick={nextStep}>
+          <Button w={100} onClick={nextStep} color="#386ed3">
             {">"}
           </Button>
         )}

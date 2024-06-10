@@ -5,14 +5,6 @@
   color: azure;
 }
 
-.mantine-Stepper-stepIcon:where([data-progress]) {
-  border-color: #386ed3;
-}
-
-.mantine-Stepper-separator:where([data-active]) {
-  background-color: #386ed3;
-}
-
 .mantine-Stepper-steps {
   margin: auto;
   width: 60%;
@@ -47,6 +39,7 @@
   flex-direction: column;
   align-items: center;
   height: 128px;
+  color: #002466;
 
   .air-text {
     margin-top: -77px;
@@ -83,8 +76,14 @@
   align-items: center;
 }
 
+.temperature-header {
+  margin-left: auto;
+  color: #002466;
+}
+
 .title-header {
   margin-left: auto;
+  color: #002466;
 }
 
 .rain-header {

@@ -30,7 +30,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 205px;
+  height: 235px;
 }
 
 .temp-card {
@@ -80,6 +80,11 @@
   @media (max-width: em(400px)) {
     gap: 1rem;
   }
+}
+
+.checkbox-title {
+  display: flex;
+  align-items: center;
 }
 
 .checkbox-card {

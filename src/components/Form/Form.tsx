@@ -8,6 +8,7 @@ import {
   Checkbox,
   Text,
   Card,
+  Title,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import "./Form.css";
@@ -26,9 +27,9 @@ function Form() {
   const form = useForm({
     mode: "controlled",
     initialValues: {
-      air: 55,
-      water: 55,
-      wind: false,
+      air: 60,
+      water: 60,
+      wind: true,
       rain: false,
     },
   });
@@ -46,6 +47,9 @@ function Form() {
       <Stepper active={active} onStepClick={setActive}>
         <Stepper.Step>
           <Card className="temp-card">
+            <Title size="h3" mx="auto">
+              Air Temperature (F°)
+            </Title>
             <div className="temperature-icon">
               <IoSunnyOutline fontSize={128} />
               <Text className="air-text">{form.values.air}</Text>
@@ -63,6 +67,9 @@ function Form() {
 
         <Stepper.Step>
           <Card className="temp-card">
+            <Title size="h3" mx="auto">
+              Water Temperature (F°)
+            </Title>
             <div className="temperature-icon">
               <IoWaterOutline fontSize={80} className="water-icon" />
               <Text className="water-text">{form.values.water}</Text>
@@ -81,12 +88,15 @@ function Form() {
         <Stepper.Step>
           <div className="checkbox-container">
             <div className="checkbox-card">
-              <Checkbox
-                radius="md"
-                label="Wind?"
-                key={form.key("wind")}
-                {...form.getInputProps("wind", { type: "checkbox" })}
-              />
+              <div className="checkbox-title">
+                <Title order={3} size="h4" ml="auto" mr={24}>
+                  Wind?
+                </Title>
+                <Checkbox
+                  key={form.key("wind")}
+                  {...form.getInputProps("wind", { type: "checkbox" })}
+                />
+              </div>
               {form.values.wind ? (
                 <WiCloudyGusts
                   fontSize={128}
@@ -104,12 +114,15 @@ function Form() {
               )}
             </div>
             <div className="checkbox-card">
-              <Checkbox
-                radius="md"
-                label="Rain?"
-                key={form.key("rain")}
-                {...form.getInputProps("rain", { type: "checkbox" })}
-              />
+              <div className="checkbox-title">
+                <Title order={3} size="h4" ml="auto" mr={28}>
+                  Rain?
+                </Title>
+                <Checkbox
+                  key={form.key("rain")}
+                  {...form.getInputProps("rain", { type: "checkbox" })}
+                />
+              </div>
               {form.values.rain ? (
                 <WiRain
                   fontSize={128}

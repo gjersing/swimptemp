@@ -19,9 +19,9 @@ function Form() {
   const [active, setActive] = useState(0);
 
   const marks = [
-    { value: 30, label: "< 30" },
-    { value: 60, label: "60" },
-    { value: 90, label: "> 90" },
+    { value: 30, label: "< 30°" },
+    { value: 60, label: "60°" },
+    { value: 90, label: "> 90°" },
   ];
 
   const form = useForm({
@@ -33,6 +33,13 @@ function Form() {
       rain: false,
     },
   });
+
+  const tempText = (temp: number) => {
+    return 30 < temp && temp < 90 ? `${temp}°` : 30 < temp ? ">90°" : "<30°";
+  };
+
+  const waterText = tempText(form.values.water);
+  const airText = tempText(form.values.air);
 
   const nextStep = () =>
     setActive((current) => {
@@ -60,8 +67,8 @@ function Form() {
               Air Temperature (F°)
             </Title>
             <div className="temperature-icon">
-              <IoSunnyOutline fontSize={128} />
-              <Text className="air-text">{form.values.air}</Text>
+              <IoSunnyOutline fontSize={128} className="sun-icon" />
+              <Text className="air-text">{airText}</Text>
             </div>
             <Slider
               defaultValue={60}
@@ -86,7 +93,7 @@ function Form() {
             </Title>
             <div className="temperature-icon">
               <IoWaterOutline fontSize={80} className="water-icon" />
-              <Text className="water-text">{form.values.water}</Text>
+              <Text className="water-text">{waterText}</Text>
             </div>
             <Slider
               defaultValue={60}

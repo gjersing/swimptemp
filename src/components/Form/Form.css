@@ -43,8 +43,16 @@
 
   .air-text {
     margin-top: -77px;
+    margin-left: 2px;
     font-weight: bold;
     user-select: none;
+    font-size: 14px;
+  }
+
+  .sun-icon {
+    circle {
+      r: 90;
+    }
   }
 
   .water-icon {
@@ -55,6 +63,7 @@
     margin-top: -50px;
     font-weight: bold;
     user-select: none;
+    font-size: 14px;
   }
 }
 

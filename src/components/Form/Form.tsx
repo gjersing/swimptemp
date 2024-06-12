@@ -8,6 +8,7 @@ import {
   Text,
   Card,
   Title,
+  List,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import "./Form.css";
@@ -198,6 +199,25 @@ function Form() {
           {">"}
         </Button>
       </Group>
+      <Card className="info-card" mt={20} mx="auto" maw="420px">
+        <Text mb={2} size="sm">
+          <Text size="lg" fw={600} span mr={5}>
+            More Information
+          </Text>
+          <Text span className="info-icons">
+            <Text span className="temp-icon">
+              (<IoSunnyOutline /> {form.values.air}°
+            </Text>
+            <Text span className="temp-icon">
+              <IoWaterOutline /> {form.values.water}°)
+            </Text>
+          </Text>
+        </Text>
+        <List withPadding>
+          <List.Item>{form.values.wind ? "Wind" : "No Wind"}</List.Item>
+          <List.Item>{form.values.rain ? "Rain" : "No Rain"}</List.Item>
+        </List>
+      </Card>
     </div>
   );
 }

@@ -3,7 +3,6 @@ import {
   Stepper,
   Button,
   Group,
-  Code,
   Slider,
   Checkbox,
   Text,
@@ -14,6 +13,7 @@ import { useForm } from "@mantine/form";
 import "./Form.css";
 import { WiCloud, WiCloudyGusts, WiRain, WiRainWind } from "react-icons/wi";
 import { IoSunnyOutline, IoWaterOutline } from "react-icons/io5";
+import ResultCard from "../ResultCard/ResultCard";
 
 function Form() {
   const [active, setActive] = useState(0);
@@ -174,10 +174,7 @@ function Form() {
           </div>
         </Stepper.Step>
         <Stepper.Completed>
-          Completed! Form values:
-          <Code block mt="lg">
-            {JSON.stringify(form.getValues(), null, 2)}
-          </Code>
+          <ResultCard values={form.getValues()} />
         </Stepper.Completed>
       </Stepper>
 

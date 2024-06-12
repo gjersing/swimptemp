@@ -1,6 +1,10 @@
-import { Alert, Card, List, Text } from "@mantine/core";
+import { Alert, Text } from "@mantine/core";
 import "./ResultCard.css";
-import { IoSunnyOutline, IoWaterOutline } from "react-icons/io5";
+import {
+  IoAlertCircleOutline,
+  IoCheckmarkCircleOutline,
+  IoWarningOutline,
+} from "react-icons/io5";
 
 export type ResultCardParams = {
   values: {
@@ -11,17 +15,19 @@ export type ResultCardParams = {
   };
 };
 
+type colors = "red" | "yellow" | "green";
+
 function ResultCard(props: ResultCardParams) {
   const getResultColor = () => {
     if (
-      props.values.water < 50 ||
-      (props.values.water < 60 && props.values.wind && props.values.rain)
+      props.values.water <= 50 ||
+      (props.values.water <= 60 && props.values.wind && props.values.rain)
     ) {
       return "red";
     }
     if (
-      props.values.water < 60 ||
-      (props.values.water < 70 && props.values.wind && props.values.rain)
+      props.values.water <= 60 ||
+      (props.values.water <= 70 && props.values.wind && props.values.rain)
     ) {
       return "yellow";
     }
@@ -31,30 +37,46 @@ function ResultCard(props: ResultCardParams) {
 
   const alertClassname = `result-alert ${resultColor}`;
 
+  const colorToAlertMap = (color: colors) => {
+    switch (color) {
+      case "green":
+        return {
+          icon: <IoCheckmarkCircleOutline />,
+          title: "All set!",
+          message: "Temperatures are safe for you to enjoy a day on the water.",
+          info: "Watch for  waters approaching 70°, where breath becomes difficult to control and hold.",
+        };
+      case "yellow":
+        return {
+          icon: <IoWarningOutline />,
+          title: "Warning!",
+          message:
+            "Breath control and cognitive function can be impaired at these temperatures.",
+          info: "Wear a wet suit! Do not swim without adequate preparation.",
+        };
+      case "red":
+        return {
+          icon: <IoAlertCircleOutline />,
+          title: "Danger! Do not swim",
+          message:
+            "Immediately Life-threatening temperatures. Maximum intensity cold shock, gasping and hypothermia.",
+          info: "Waters below 60° will kill! Paddle only if experienced and wearing a dry suit and life jacket.",
+        };
+    }
+  };
+
+  const alert = colorToAlertMap(resultColor);
+
   return (
     <div className="result-card">
       <Alert className={alertClassname}>
-        <Text c={resultColor}>Water Temperature: {props.values.water}°</Text>
-      </Alert>
-      <Card className="info-card">
-        <Text mb={2} size="sm">
-          <Text size="lg" fw={600} span mr={5}>
-            More Information
-          </Text>
-          <Text span className="info-icons">
-            <Text span className="temp-icon">
-              (<IoSunnyOutline /> {props.values.air}°
-            </Text>
-            <Text span className="temp-icon">
-              <IoWaterOutline /> {props.values.water}°)
-            </Text>
-          </Text>
+        <Text c={resultColor}>
+          {alert.icon}
+          {alert.title}
         </Text>
-        <List withPadding>
-          <List.Item>{props.values.wind ? "Wind" : "No Wind"}</List.Item>
-          <List.Item>{props.values.rain ? "Rain" : "No Rain"}</List.Item>
-        </List>
-      </Card>
+        <Text>{alert.message}</Text>
+        <Text>{alert.info}</Text>
+      </Alert>
     </div>
   );
 }

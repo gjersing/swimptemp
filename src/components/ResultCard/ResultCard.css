@@ -3,4 +3,40 @@
   max-width: 550px;
   width: 95%;
   margin: 1rem;
+  border-radius: 12px;
+}
+
+.result-alert {
+  margin-bottom: 0.5rem;
+}
+
+.green {
+  background-color: rgb(207, 248, 207);
+  border: 3px solid lightgreen;
+}
+
+.red {
+  background-color: rgb(251, 238, 238);
+  border: 3px solid rgb(226, 100, 93);
+}
+
+.yellow {
+  background-color: rgb(253, 244, 231);
+  border: 3px solid rgb(241, 191, 73);
+}
+
+.info-card {
+  background-color: rgb(246, 246, 246);
+  border: 2px solid gray;
+}
+
+.info-icons {
+  display: inline-flex;
+  align-items: center;
+}
+
+.temp-icon {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 5px;
 }

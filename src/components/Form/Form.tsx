@@ -178,17 +178,25 @@ function Form() {
         </Stepper.Completed>
       </Stepper>
 
-      <Group justify="center" mt="lg">
-        {active !== 0 && (
-          <Button variant="default" w={100} onClick={prevStep}>
-            {"<"}
-          </Button>
-        )}
-        {active !== 3 && (
-          <Button w={100} onClick={nextStep} color="#386ed3">
-            {">"}
-          </Button>
-        )}
+      <Group justify="space-around" mt="lg" maw="400px" mx="auto">
+        <Button
+          variant="default"
+          w={100}
+          onClick={prevStep}
+          disabled={active === 0}
+          style={{ visibility: active === 0 ? "hidden" : "visible" }}
+        >
+          {"<"}
+        </Button>
+        <Button
+          w={100}
+          onClick={nextStep}
+          color="#386ed3"
+          disabled={active === 3}
+          style={{ visibility: active === 3 ? "hidden" : "visible" }}
+        >
+          {">"}
+        </Button>
       </Group>
     </div>
   );

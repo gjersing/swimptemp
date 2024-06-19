@@ -1,4 +1,4 @@
-import { Alert, Text } from "@mantine/core";
+import { Alert, Divider, Text } from "@mantine/core";
 import "./ResultCard.css";
 import {
   IoAlertCircleOutline,
@@ -38,14 +38,14 @@ function ResultCard(props: ResultCardParams) {
     switch (color) {
       case "green":
         return {
-          icon: <IoCheckmarkCircleOutline />,
+          icon: <IoCheckmarkCircleOutline fontSize={40} />,
           title: "All set!",
           message: "Temperatures are safe for you to enjoy a day on the water.",
           info: "Watch for  waters approaching 70°, where breath becomes difficult to control and hold.",
         };
       case "yellow":
         return {
-          icon: <IoWarningOutline />,
+          icon: <IoWarningOutline fontSize={40} />,
           title: "Warning!",
           message:
             "Breath control and cognitive function can be impaired at these temperatures.",
@@ -53,7 +53,7 @@ function ResultCard(props: ResultCardParams) {
         };
       case "red":
         return {
-          icon: <IoAlertCircleOutline />,
+          icon: <IoAlertCircleOutline fontSize={40} />,
           title: "Danger! Do not swim",
           message:
             "Immediately Life-threatening temperatures. Maximum intensity cold shock, gasping and hypothermia.",
@@ -67,10 +67,11 @@ function ResultCard(props: ResultCardParams) {
   return (
     <div className="result-card">
       <Alert className={alertClassname}>
-        <Text c={resultColor}>
+        <Text c={resultColor} size="32px" className="result-alert-title">
           {alert.icon}
           {alert.title}
         </Text>
+        <Divider color={resultColor} my="1rem" />
         <Text>{alert.message}</Text>
         <Text>{alert.info}</Text>
       </Alert>

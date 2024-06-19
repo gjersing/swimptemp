@@ -39,3 +39,9 @@
   align-items: center;
   margin-right: 5px;
 }
+
+.result-alert-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

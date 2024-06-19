@@ -18,17 +18,14 @@ export type ResultCardParams = {
 type colors = "red" | "yellow" | "green";
 
 function ResultCard(props: ResultCardParams) {
+  const safeTemp = props.values.wind || props.values.rain ? 75 : 70;
+  const dangerousTemp = props.values.wind || props.values.rain ? 65 : 60;
+
   const getResultColor = () => {
-    if (
-      props.values.water <= 50 ||
-      (props.values.water <= 60 && props.values.wind && props.values.rain)
-    ) {
+    if (props.values.water <= dangerousTemp) {
       return "red";
     }
-    if (
-      props.values.water <= 60 ||
-      (props.values.water <= 70 && props.values.wind && props.values.rain)
-    ) {
+    if (props.values.water <= safeTemp) {
       return "yellow";
     }
     return "green";
@@ -60,7 +57,7 @@ function ResultCard(props: ResultCardParams) {
           title: "Danger! Do not swim",
           message:
             "Immediately Life-threatening temperatures. Maximum intensity cold shock, gasping and hypothermia.",
-          info: "Waters below 60° will kill! Paddle only if experienced and wearing a dry suit and life jacket.",
+          info: "Waters below 60° can and will kill! Paddle only if experienced and wearing a dry suit and life jacket.",
         };
     }
   };
